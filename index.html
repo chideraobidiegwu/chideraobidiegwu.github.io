@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chidera L. Obidiegwu — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0F1720;
+    --bg-alt: #141F2B;
+    --card: #182430;
+    --line: #2A3A48;
+    --text: #EAF0F4;
+    --text-dim: #9AAAB6;
+    --accent: #E8A33D;
+    --accent-dim: #7A5A25;
+    --good: #5FB88E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,23,32,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px;}
+  .nav-name{font-weight:600;font-size:15px;letter-spacing:0.02em;}
+  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--text-dim);}
+  .nav-links a{text-decoration:none;transition:color .2s;}
+  .nav-links a:hover{color:var(--accent);}
+
+  /* HERO */
+  header.hero{
+    padding:100px 0 80px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;top:-40%;right:-10%;
+    width:600px;height:600px;
+    background:radial-gradient(circle, rgba(232,163,61,0.10) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--accent);
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    margin-bottom:20px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:20px;height:1px;background:var(--accent);}
+  h1.display{
+    font-size:56px;
+    font-weight:700;
+    line-height:1.08;
+    letter-spacing:-0.02em;
+    max-width:780px;
+  }
+  h1.display span{color:var(--accent);}
+  .hero-sub{
+    margin-top:22px;
+    font-size:18px;
+    color:var(--text-dim);
+    max-width:620px;
+  }
+  .hero-stats{
+    display:flex;gap:40px;
+    margin-top:48px;
+    flex-wrap:wrap;
+  }
+  .stat .num{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:30px;font-weight:700;color:var(--accent);
+  }
+  .stat .label{
+    font-size:12px;color:var(--text-dim);
+    text-transform:uppercase;letter-spacing:0.06em;margin-top:4px;
+  }
+
+  /* SECTION HEADERS */
+  .section{padding:90px 0;border-bottom:1px solid var(--line);}
+  .section-head{margin-bottom:48px;}
+  .section-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:0.1em;
+    margin-bottom:10px;
+  }
+  .section h2{font-size:32px;font-weight:600;letter-spacing:-0.01em;}
+
+  /* ABOUT */
+  .about-body{max-width:700px;font-size:16px;color:var(--text-dim);}
+  .about-body p{margin-bottom:16px;}
+  .about-body strong{color:var(--text);font-weight:600;}
+  .skills-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;}
+  .pill{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    padding:7px 14px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--text-dim);
+  }
+
+  /* PROJECTS */
+  .project{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+    padding:48px 0;
+  }
+  .project:not(:last-child){border-bottom:1px solid var(--line);}
+  .p-index{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--accent-dim);
+    font-size:13px;
+    margin-bottom:12px;
+  }
+  .p-title{font-size:24px;font-weight:600;margin-bottom:14px;}
+  .p-desc{color:var(--text-dim);font-size:15px;margin-bottom:20px;}
+  .p-findings{list-style:none;margin-bottom:20px;}
+  .p-findings li{
+    font-size:14px;color:var(--text-dim);
+    padding-left:18px;position:relative;margin-bottom:8px;
+  }
+  .p-findings li::before{
+    content:"→";position:absolute;left:0;color:var(--accent);
+  }
+  .p-tools{display:flex;gap:8px;flex-wrap:wrap;}
+  .tool-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;color:var(--good);
+    border:1px solid rgba(95,184,142,0.3);
+    background:rgba(95,184,142,0.08);
+    padding:4px 10px;border-radius:4px;
+  }
+  .p-image{
+    max-width:640px;
+    margin:0 auto;
+    border-radius:8px;overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 20px 50px -20px rgba(0,0,0,0.6);
+    transition:transform .3s ease;
+  }
+  .p-image img{width:100%;}
+  .p-image:hover{transform:translateY(-4px);}
+
+  /* EXPERIENCE */
+  .exp-item{
+    padding:24px 0;
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:24px;
+  }
+  .exp-item:last-child{border-bottom:none;}
+  .exp-date{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text-dim);}
+  .exp-role{font-size:17px;font-weight:600;margin-bottom:4px;}
+  .exp-co{font-size:14px;color:var(--accent);margin-bottom:10px;}
+  .exp-item ul{list-style:none;}
+  .exp-item li{
+    font-size:14.5px;color:var(--text-dim);
+    padding-left:16px;position:relative;margin-bottom:6px;
+  }
+  .exp-item li::before{content:"—";position:absolute;left:0;color:var(--line);}
+
+  /* CONTACT */
+  .contact-wrap{
+    display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:32px;
+  }
+  .contact-cta{font-size:34px;font-weight:600;max-width:480px;line-height:1.2;}
+  .contact-links{display:flex;flex-direction:column;gap:12px;}
+  .contact-links a{
+    text-decoration:none;font-size:15px;color:var(--text-dim);
+    display:flex;align-items:center;gap:10px;
+    transition:color .2s;
+  }
+  .contact-links a:hover{color:var(--accent);}
+  .contact-links .k{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);width:60px;}
+
+  footer{padding:32px 0;text-align:center;font-size:12.5px;color:var(--text-dim);}
+
+  @media (max-width:800px){
+    h1.display{font-size:38px;}
+    .exp-item{grid-template-columns:1fr;}
+    .contact-cta{font-size:26px;}
+    .hero-stats{gap:28px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-name">Chidera Obidiegwu</div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Data Analyst</div>
+    <h1 class="display">Turning raw datasets into decisions worth <span>acting on.</span></h1>
+    <p class="hero-sub">Skilled in Excel, Power BI, and SQL. Built to find the story behind the numbers, not just report them.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="num">101K+</div>
+        <div class="label">Records analyzed</div>
+      </div>
+      <div class="stat">
+        <div class="num">3</div>
+        <div class="label">Dashboard projects</div>
+      </div>
+      <div class="stat">
+        <div class="num">2</div>
+        <div class="label">Analyst roles held</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">01 — About</div>
+      <h2>About</h2>
+    </div>
+    <div class="about-body">
+      <p>I translate data into direction — with a track record of turning raw data into clear, actionable insights. Using Excel, Power BI, and SQL, I build end-to-end reporting, from exploratory analysis to stakeholder-ready dashboards, identifying what's driving a business problem.</p>
+    </div>
+    <div class="section-head" style="margin-top:48px;">
+      <div class="section-tag">Executive Summary</div>
+    </div>
+    <div class="about-body">
+      <p>I turn raw, messy data into findings people actually act on. Working across healthcare, customer analytics, and retail, I build dashboards in Power BI and reports in Excel and SQL that go beyond visualization — each one built to answer a real question and point to a decision.</p>
+      <p>My Patient Readmission Analytics Dashboard broke down 101,766 hospital encounters to pinpoint what was driving a 46.1% readmission rate. My Customer Demographics & Loyalty Dashboard segmented 500 customers to sharpen engagement strategy. My Cafe Sales Performance Dashboard turned transaction data into concrete inventory decisions.</p>
+      <p>That same instinct has driven real results: recovering ~8% of lost sales by tracing a regional sales dip to its root cause, cutting stockouts on fast-moving inventory by ~20% through better demand tracking, and cutting manual reporting work by ~10 hours a week by streamlining a data pipeline.</p>
+      <p>I'm certified through Google's Data Analytics Professional program, and what I bring beyond the certificate is the instinct to clean data properly, ask the right question of it, and translate the answer into language a non-technical stakeholder can act on immediately.</p>
+    </div>
+    <div class="skills-row">
+      <span class="pill">Excel (Advanced)</span>
+      <span class="pill">Power BI</span>
+      <span class="pill">SQL</span>
+      <span class="pill">Data Cleaning</span>
+      <span class="pill">Exploratory Data Analysis</span>
+      <span class="pill">Data Storytelling</span>
+      <span class="pill">Dashboard Design</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">02 — Selected Work</div>
+      <h2>Dashboards & analysis</h2>
+    </div>
+
+    <div class="project">
+      <div class="p-content">
+        <div class="p-index">Project 01</div>
+        <div class="p-title">Patient Readmission Analytics Dashboard</div>
+        <p class="p-desc">Analyzed 101,766 hospital encounters to pinpoint the true drivers of a 46.1% readmission rate, translating findings into recommendations hospital operations could act on.</p>
+        <ul class="p-findings">
+          <li>70–79 age group and Special Cases admissions drove the highest readmission volume</li>
+          <li>Untested A1C patients had the highest readmission count of any group (39,426)</li>
+          <li>Delivered 4 strategic recommendations for post-discharge care and screening</li>
+        </ul>
+        <div class="p-tools">
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">Healthcare Data</span>
+          <span class="tool-tag">EDA</span>
+        </div>
+      </div>
+      <div class="p-image"><img src="images/project1-readmission.png" alt="Patient Readmission Analytics Dashboard"></div>
+    </div>
+
+    <div class="project">
+      <div class="p-content">
+        <div class="p-index">Project 02</div>
+        <div class="p-title">Customer Demographics & Loyalty Dashboard</div>
+        <p class="p-desc">Segmented 500 customers by region and business type to define the loyal base and sharpen where engagement strategy should focus next.</p>
+        <ul class="p-findings">
+          <li>41.1% of the customer base falls into the "Loyal" segment</li>
+          <li>Average tenure of 6 years, average income of $114.4K</li>
+          <li>Segmented by generation, wealth profile, and profession to sharpen targeting</li>
+          <li>Tracked customer growth from 2015–2025 to spot momentum shifts</li>
+        </ul>
+        <div class="p-tools">
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">Segmentation</span>
+          <span class="tool-tag">Customer Analytics</span>
+        </div>
+      </div>
+      <div class="p-image"><img src="images/project2-customer.png" alt="Customer Demographics and Loyalty Dashboard"></div>
+    </div>
+
+    <div class="project">
+      <div class="p-content">
+        <div class="p-index">Project 03</div>
+        <div class="p-title">Cafe Sales Performance Analysis</div>
+        <p class="p-desc">Analyzed sales by product, location, and payment method to identify which items and channels were driving revenue — and which weren't.</p>
+        <ul class="p-findings">
+          <li>Salad, Sandwich, and Smoothie identified as the top revenue drivers</li>
+          <li>Spend split evenly between Cash and Credit Card</li>
+          <li>Compared performance across Takeaway, In-store, and Other channels</li>
+          <li>₦89.4K in total spend analyzed across Oct–Dec</li>
+        </ul>
+        <div class="p-tools">
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">Retail Data</span>
+          <span class="tool-tag">Sales Analysis</span>
+        </div>
+      </div>
+      <div class="p-image"><img src="images/project3-cafe.png" alt="Cafe Sales Performance Analysis Dashboard"></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">03 — Experience</div>
+      <h2>Where I've worked</h2>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Jan 2025 – Jun 2025</div>
+      <div>
+        <div class="exp-role">Data Analyst Intern</div>
+        <div class="exp-co">Coscharis Motors</div>
+        <ul>
+          <li>Analyzed 50K+ vehicle sales and aftersales records across 10+ showroom locations nationwide</li>
+          <li>Built 5 Power BI dashboards tracking sales performance, helping management reprioritize 3 underperforming showrooms</li>
+          <li>Identified drivers behind a 15% regional sales dip; supported adjustments that recovered ~8% of lost sales</li>
+          <li>Streamlined a data pipeline with engineering, cutting manual reporting work by ~10 hours weekly</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Sep 2025 – Mar 2026</div>
+      <div>
+        <div class="exp-role">Data Research Assistant</div>
+        <div class="exp-co">De Lord's Auto</div>
+        <ul>
+          <li>Tracked demand for 200+ spare parts SKUs, cutting stockouts on fast-moving items by ~20%</li>
+          <li>Built inventory and pricing reports in Excel and SQL, supporting negotiations that lowered restocking costs by ~10%</li>
+          <li>Analyzed purchase patterns to flag 5 high-demand parts, informing restocking priorities</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="contact" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">04 — Contact</div>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-cta">Open to data analyst roles — let's talk.</div>
+      <div class="contact-links">
+        <a href="mailto:obidiegwuchidera2005@gmail.com"><span class="k">EMAIL</span> obidiegwuchidera2005@gmail.com</a>
+        <a href="tel:+2348062230584"><span class="k">PHONE</span> +234 806 223 0584</a>
+        <a href="https://linkedin.com/in/obidiegwu-chidera" target="_blank"><span class="k">LINKEDIN</span> linkedin.com/in/obidiegwu-chidera</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Chidera L. Obidiegwu — Data Analyst Portfolio</footer>
+
+</body>
+</html>
